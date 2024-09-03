@@ -1,18 +1,37 @@
 package com.nathan.duoc_peliculas.modelsDto;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "mov_pelicula") // tabla
+
 public class MovieDto {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pelicula_id")
+    private Long id;
+
+    @Column(name = "genero_id")
+    private Long genero;
+    @Column(name = "titulo")
     private String titulo;
+    @Column(name = "anio")
     private int anio;
+    @Column(name = "director")
     private String director;
-    private String genero;
+    @Column(name = "sinopsis")
     private String sinopsis;
 
     public MovieDto() {
     }
 
-    public MovieDto(int id, String titulo, int anio, String director, String genero, String sinopsis) {
+    public MovieDto(Long id, String titulo, int anio, String director, Long genero, String sinopsis) {
         this.id = id;
         this.titulo = titulo;
         this.anio = anio;
@@ -21,11 +40,11 @@ public class MovieDto {
         this.sinopsis = sinopsis;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,11 +72,11 @@ public class MovieDto {
         this.director = director;
     }
 
-    public String getGenero() {
+    public Long getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Long genero) {
         this.genero = genero;
     }
 
