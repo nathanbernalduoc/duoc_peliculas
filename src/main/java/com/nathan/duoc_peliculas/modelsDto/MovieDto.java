@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,8 +13,10 @@ import jakarta.persistence.Table;
 
 public class MovieDto {
 
+    // configuración de secuencia SEQ_PELICULA_ID
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_pelicula_id")
+    @SequenceGenerator(name="seq_pelicula_id", sequenceName="seq_pelicula_id", allocationSize=1)
     @Column(name = "pelicula_id")
     private Long id;
 
