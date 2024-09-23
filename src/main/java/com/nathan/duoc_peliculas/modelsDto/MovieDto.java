@@ -1,5 +1,7 @@
 package com.nathan.duoc_peliculas.modelsDto;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "mov_pelicula") // tabla
 
-public class MovieDto {
+public class MovieDto extends RepresentationModel<MovieDto> {
 
     // configuración de secuencia SEQ_PELICULA_ID
     @Id
@@ -33,7 +35,7 @@ public class MovieDto {
 
     public MovieDto() {
     }
-
+    
     public MovieDto(Long id, String titulo, int anio, String director, Long genero, String sinopsis) {
         this.id = id;
         this.titulo = titulo;
